@@ -33,14 +33,14 @@ jobs:
             - .git
       - run: mkdir -p $CIRCLE_TEST_REPORTS
       - restore_cache:
-          key: gem-dep-v2-{{ checksum "Gemfile.lock" }}
+          key: gem-dep-v3-{{ checksum "Gemfile.lock" }}
       - run: ruby -v
       - run: gem install --no-document bundler -v 1.17.3
       - run: gem list bundler
       - run: bundle _1.17.3_ -v
       - run: bundle _1.17.3_ check || bundle _1.17.3_ install
       - save_cache:
-          key: gem-dep-v2-{{ checksum "Gemfile.lock" }}
+          key: gem-dep-v3-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
             - ~/.bundle
